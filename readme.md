@@ -5,9 +5,11 @@
 - Prairie Tibetan sheep(PT)  
 - Oula sheep(OL)  
 - Valley Tibetan sheep(VT)  
+
 低海拔羊分为：  
 - Hu sheep(Hu)  
 - Small Tail Han sheep(STH);  
+    
 五种羊每种都下载了10个样本,总共50个样本  
 
 参考基因组为： Texel sheep；下载地址为：[Texel reference genome](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/298/735/GCF_000298735.2_Oar_v4.0/)
