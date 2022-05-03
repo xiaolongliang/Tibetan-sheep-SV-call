@@ -1,14 +1,14 @@
 # Data download
-本次SV分析的数据是从NCBI上下载的；下载地址为： [SRA数据下载](https://www.ncbi.nlm.nih.gov/Traces/study/?page=2&acc=SRP066883&o=acc_s%3Aa&s=SRR3193935,SRR3193937,SRR3193945)
+本次基于**重测序数据**的SV分析数据是从NCBI上下载的；下载地址为： [SRA数据下载](https://www.ncbi.nlm.nih.gov/Traces/study/?page=2&acc=SRP066883&o=acc_s%3Aa&s=SRR3193935,SRR3193937,SRR3193945)
 
 总共有高低海拔两组羊，高海拔藏羊分为：  
-Prairie Tibetan sheep(PT)  
-Oula sheep(OL)  
-Valley Tibetan sheep(VT)  
+- Prairie Tibetan sheep(PT)  
+- Oula sheep(OL)  
+- Valley Tibetan sheep(VT)  
 低海拔羊分为：  
-Hu sheep(Hu)  
-Small Tail Han sheep(STH);  
-五种羊每种都下载了10个样本  
+- Hu sheep(Hu)  
+- Small Tail Han sheep(STH);  
+五种羊每种都下载了10个样本,总共50个样本  
 
 参考基因组为： Texel sheep；下载地址为：[Texel reference genome](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/298/735/GCF_000298735.2_Oar_v4.0/)
 
