@@ -138,6 +138,7 @@ python 00.filterSV&getTypeLen vcftools-filter.recode.vcf
 # sv annotation
 sv 注释用到的软件为 [vcfanno](https://github.com/brentp/vcfanno)
 ```shell
+# 1. 生成文件
 perl -alne 'if ($F[2] eq "gene") {$F[8] =~ /ID=(.*?);/; $name = $1; $start = $F[4] - 1; $end = $start + 20001; print "$F[0]\t$start\t$end\t$name";}' GCF_000298735.2_Oar_v4.0_genomic.gff | sort -k1,1 -k2,2n -k3,3n | bgzip -c > Texel.genes.downstream.bed.gz
 perl -alne 'if ($F[2] eq "gene") {$F[8] =~ /ID=(.*?);/; $name = $1; $start = $F[3] - 20001; $end = $F[3]; print "$F[0]\t$start\t$end\t$name";}' GCF_000298735.2_Oar_v4.0_genomic.gff | sort -k1,1 -k2,2n -k3,3n | bgzip -c > Texel.genes.upstream.bed.gz
 perl -alne 'if ($F[2] eq "exon") {$F[8] =~ /ID=(.*?);/; $name = $1; $start = $F[3] - 1; $end = $F[4] - 1; print "$F[0]\t$start\t$end\t$name";}' GCF_000298735.2_Oar_v4.0_genomic.gff | sort -k1,1 -k2,2n -k3,3n | bgzip -c > Texel.exons.srt.bed.gz
@@ -147,13 +148,13 @@ perl -alne 'if ($F[2] eq "CDS") {$F[8] =~ /ID=(.*?);/; $name = $1; $start = $F[3
 python cds.py  | bgzip -c  > Tibetan.cds_end.srt.bed.gz
 python cds.py  | bgzip -c  > Tibetan.cds_start.srt.bed.gz
 
-2. 建立索引
+# 2. 建立索引
 tabix Tibetan.genes.upstream.bed.gz
 tabix Tibetan.genes.downstream.bed.gz
 tabix Tibetan.cds_end.srt.bed.gz
 tabix Tibetan.cds_start.srt.bed.gz
 tabix Tibetan.exons.srt.bed.gz
-3. 注释
+# 3. 注释
 # sv number
 ./vcfanno_linux64 config.toml ../Sheep.filter.vcf > Sheep_anno.vcf
 ```
@@ -168,12 +169,10 @@ Rscript fstTop0.05.R
 ## get the genes based on fst top 5%
 python 00.GetFstGene.py ../gene_anno/sv_genes fsttop0.05.txt  > GetFstGene.txt
 ```  
-<br>
-
-
 ###### 补充：
 ```shell
 ## 从注释后的vcf文件Sheep_anno.vcf中中提取每个SV对应的基因
 python SV_gene.py > sv_genes
 ## 从sv_genes中提取每个SV在基因上的位置，包括downstream, upstream, genes, exons等
+python 00.Getgenetype.py > Getgenetype
 ```
