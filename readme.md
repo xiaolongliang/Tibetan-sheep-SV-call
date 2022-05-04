@@ -171,7 +171,7 @@ Rscript fstTop0.05.R
 ## get the genes based on fst top 5%
 python 00.GetFstGene.py ../gene_anno/sv_genes fsttop0.05.txt  > GetFstGene.txt
 ```  
-[具体分析过程](https://github.com/xiaolongliang/Tibetan-sheep-SV-call/blob/master/Tibetan-SV-calling-Data-analysis.md) 
+[群体分析详细过程](https://github.com/xiaolongliang/Tibetan-sheep-SV-call/blob/master/Tibetan-SV-calling-Data-analysis.md) 
 
 ###### 补充：
 ```shell
