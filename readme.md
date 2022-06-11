@@ -145,7 +145,10 @@ perl -alne 'if ($F[2] eq "gene") {$F[8] =~ /ID=(.*?);/; $name = $1; $start = $F[
 perl -alne 'if ($F[2] eq "gene") {$F[8] =~ /ID=(.*?);/; $name = $1; $start = $F[3] - 20001; $end = $F[3]; print "$F[0]\t$start\t$end\t$name";}' GCF_000298735.2_Oar_v4.0_genomic.gff | sort -k1,1 -k2,2n -k3,3n | bgzip -c > Texel.genes.upstream.bed.gz
 perl -alne 'if ($F[2] eq "exon") {$F[8] =~ /ID=(.*?);/; $name = $1; $start = $F[3] - 1; $end = $F[4] - 1; print "$F[0]\t$start\t$end\t$name";}' GCF_000298735.2_Oar_v4.0_genomic.gff | sort -k1,1 -k2,2n -k3,3n | bgzip -c > Texel.exons.srt.bed.gz
 perl -alne 'if ($F[2] eq "gene") {$F[8] =~ /ID=(.*?);/; $name = $1; $start = $F[3] - 1; $end = $F[4] - 1; print "$F[0]\t$start\t$end\t$name";}' GCF_000298735.2_Oar_v4.0_genomic.gff | sort -k1,1 -k2,2n -k3,3n | bgzip -c > Texel.genes.srt.bed.gz
-perl -alne 'if ($F[2] eq "CDS") {$F[8] =~ /ID=(.*?);/; $name = $1; $start = $F[3]; $end = $F[4]; print "$F[0]\t$start\t$end\t$name";}' GCA_017524585.1_CAU_O.aries_1.0_genomic.gff | sort -k1,1 -k2,2n -k3,3n | bgzip -c > Tibetan.cds.srt.bed.gz
+#perl -alne 'if ($F[2] eq "CDS") {$F[8] =~ /ID=(.*?);/; $name = $1; $start = $F[3]; $end = $F[4]; print "$F[0]\t$start\t$end\t$name";}' GCA_017524585.1_CAU_O.aries_1.0_genomic.gff | sort -k1,1 -k2,2n -k3,3n | bgzip -c > Tibetan.cds.srt.bed.gz
+perl -alne 'if ($F[2] eq "mRNA") {$F[8] =~ /ID=(.*?);/; $name = $1; $start = $F[3] - 1; $end = $F[3]; print "$F[0]\t$start\t$end\t$name";}' ../GCF_000298735.2_Oar_v4.0_genomic.gff | sort-k1,1 -k2,2n -k3,3n | bgzip -c > Texel.cds_start.srt.bed.gz
+perl -alne 'if ($F[2] eq "mRNA") {$F[8] =~ /ID=(.*?);/; $name = $1; $start = $F[4] - 1; $end = $F[4]; print "$F[0]\t$start\t$end\t$name";}' ../GCF_000298735.2_Oar_v4.0_genomic.gff | sort-k1,1 -k2,2n -k3,3n | bgzip -c > Texel.cds_end.srt.bed.gz
+
 
 python cds.py  | bgzip -c  > Tibetan.cds_end.srt.bed.gz
 python cds.py  | bgzip -c  > Tibetan.cds_start.srt.bed.gz
